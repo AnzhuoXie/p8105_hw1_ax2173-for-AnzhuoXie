@@ -366,23 +366,47 @@ pre code {
 </div>
 
 
-<p>data(“penguins”, package = “palmerpenguins”)</p>
-<p>This is a description of the penguins dataset:</p>
-<ul>
-<li>1)The variables include: .</li>
-</ul>
-<p>I’m an R Markdown document!</p>
-<div id="section-1" class="section level1">
-<h1>Section 1</h1>
-<p>Here’s a <strong>code chunk</strong> that samples from a <em>normal
-distribution</em>:</p>
-<pre class="r"><code>samp = rnorm(100)
-length(samp)</code></pre>
-<pre><code>## [1] 100</code></pre>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+## ✔ ggplot2 3.3.6      ✔ purrr   0.3.4 
+## ✔ tibble  3.1.8      ✔ dplyr   1.0.10
+## ✔ tidyr   1.2.1      ✔ stringr 1.4.1 
+## ✔ readr   2.1.2      ✔ forcats 0.5.2 
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<pre class="r"><code>library(readxl)
+library(haven)
+data(&quot;penguins&quot;, package = &quot;palmerpenguins&quot;)</code></pre>
+<div id="problem-1" class="section level2">
+<h2>Problem 1</h2>
+<pre class="r"><code>pendata = read_csv(&#39;.RData&#39;)</code></pre>
+<pre><code>## Warning: One or more parsing issues, see `problems()` for details</code></pre>
+<pre><code>## Rows: 60 Columns: 1
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (1): RDX3
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>spec(pendata)</code></pre>
+<pre><code>## cols(
+##   RDX3 = col_character()
+## )</code></pre>
 </div>
-<div id="section-2" class="section level1">
-<h1>Section 2</h1>
-<p>I can take the mean of the sample, too! The mean is -0.0292892.</p>
+<div id="problem-2" class="section level2">
+<h2>Problem 2</h2>
+<pre class="r"><code>fac0 = c(&#39;2&#39;,&#39;1&#39;,&#39;1&#39;,&#39;2&#39;,&#39;2&#39;,&#39;3&#39;,&#39;1&#39;,&#39;3&#39;,&#39;3&#39;,&#39;2&#39;)
+
+p2_df = tibble(
+  nrom = rnorm(10),
+  logical = nrom &gt; 0,
+  char = c(&#39;1&#39;,&#39;2&#39;,&#39;3&#39;,&#39;4&#39;,&#39;5&#39;,&#39;6&#39;,&#39;7&#39;,&#39;8&#39;,&#39;9&#39;,&#39;10&#39;),
+  fac1 = factor(fac0)
+)</code></pre>
+<pre class="r"><code>logical_num = as.numeric(pull(p2_df, var = logical))
+char_num = as.numeric(pull(p2_df, var = char))
+fac1_num = as.numeric(pull(p2_df, var = fac1))</code></pre>
 </div>
 
 
