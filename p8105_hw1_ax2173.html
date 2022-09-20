@@ -396,17 +396,20 @@ data(&quot;penguins&quot;, package = &quot;palmerpenguins&quot;)</code></pre>
 </div>
 <div id="problem-2" class="section level2">
 <h2>Problem 2</h2>
-<pre class="r"><code>fac0 = c(&#39;2&#39;,&#39;1&#39;,&#39;1&#39;,&#39;2&#39;,&#39;2&#39;,&#39;3&#39;,&#39;1&#39;,&#39;3&#39;,&#39;3&#39;,&#39;2&#39;)
-
-p2_df = tibble(
+<pre class="r"><code>p2_df = tibble(
   nrom = rnorm(10),
   logical = nrom &gt; 0,
   char = c(&#39;1&#39;,&#39;2&#39;,&#39;3&#39;,&#39;4&#39;,&#39;5&#39;,&#39;6&#39;,&#39;7&#39;,&#39;8&#39;,&#39;9&#39;,&#39;10&#39;),
-  fac1 = factor(fac0)
+  fac = factor(c(&#39;2&#39;,&#39;1&#39;,&#39;1&#39;,&#39;2&#39;,&#39;2&#39;,&#39;3&#39;,&#39;1&#39;,&#39;3&#39;,&#39;3&#39;,&#39;2&#39;))
 )</code></pre>
-<pre class="r"><code>logical_num = as.numeric(pull(p2_df, var = logical))
-char_num = as.numeric(pull(p2_df, var = char))
-fac1_num = as.numeric(pull(p2_df, var = fac1))</code></pre>
+<pre class="r"><code>mean(pull(p2_df, var = nrom))</code></pre>
+<pre><code>## [1] -0.7693242</code></pre>
+<pre class="r"><code>mean(logical_num)</code></pre>
+<pre><code>## [1] 0.3</code></pre>
+<pre class="r"><code>mean(char_num)</code></pre>
+<pre><code>## [1] 5.5</code></pre>
+<pre class="r"><code>mean(fac_num)</code></pre>
+<pre><code>## [1] 2</code></pre>
 </div>
 
 
