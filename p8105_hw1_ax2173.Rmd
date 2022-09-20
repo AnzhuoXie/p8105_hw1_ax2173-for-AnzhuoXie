@@ -1,7 +1,23 @@
 ---
-title: "Simple document"
+title: "p8015_hw1_ax2173"
 output: html_document
 ---
+
+data("penguins", package = "palmerpenguins")
+
+This is a description of the penguins dataset: 
+ 
+ * 1)The variables include: `r nrow(penguins)`.
+
+
+
+
+
+
+
+
+
+
 
 I'm an R Markdown document! 
 
