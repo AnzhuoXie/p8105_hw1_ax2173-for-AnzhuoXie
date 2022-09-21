@@ -5,23 +5,24 @@ output: html_document
 
 ```{r setup}
 library(tidyverse)
-library(readxl)
-library(haven)
 data("penguins", package = "palmerpenguins")
 ```
 
 ## Problem 1
 
-```{r}
-pendata = read_csv('.RData')
-spec(pendata)
+Import the data.
+
+```{r import data}
+data("penguins", package = "palmerpenguins")
 ```
+
+
 
 ## Problem 2
 
+First, create the dataframe.
+
 ```{r create a dataframe}
-
-
 p2_df = tibble(
   nrom = rnorm(10),
   logical = nrom > 0,
@@ -30,11 +31,15 @@ p2_df = tibble(
 )
 ```
 
-```{r convert variables, echo = FALSE}
+Then, convert the logical, character, factor variables to numeric character.
+
+```{r convert variables}
 logical_num = as.numeric(pull(p2_df, var = logical))
 char_num = as.numeric(pull(p2_df, var = char))
 fac_num = as.numeric(pull(p2_df, var = fac))
 ```
+
+Calculate the mean of variables in the dataframe.
 
 ```{r calculate the mean of each variable}
 mean(pull(p2_df, var = nrom))

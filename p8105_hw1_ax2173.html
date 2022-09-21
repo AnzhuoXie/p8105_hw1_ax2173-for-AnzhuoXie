@@ -375,37 +375,31 @@ pre code {
 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
-<pre class="r"><code>library(readxl)
-library(haven)
-data(&quot;penguins&quot;, package = &quot;palmerpenguins&quot;)</code></pre>
+<pre class="r"><code>data(&quot;penguins&quot;, package = &quot;palmerpenguins&quot;)</code></pre>
 <div id="problem-1" class="section level2">
 <h2>Problem 1</h2>
-<pre class="r"><code>pendata = read_csv(&#39;.RData&#39;)</code></pre>
-<pre><code>## Warning: One or more parsing issues, see `problems()` for details</code></pre>
-<pre><code>## Rows: 60 Columns: 1
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## chr (1): RDX3
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<pre class="r"><code>spec(pendata)</code></pre>
-<pre><code>## cols(
-##   RDX3 = col_character()
-## )</code></pre>
+<p>Import the data.</p>
+<pre class="r"><code>data(&quot;penguins&quot;, package = &quot;palmerpenguins&quot;)</code></pre>
 </div>
 <div id="problem-2" class="section level2">
 <h2>Problem 2</h2>
+<p>First, create the dataframe.</p>
 <pre class="r"><code>p2_df = tibble(
   nrom = rnorm(10),
   logical = nrom &gt; 0,
   char = c(&#39;1&#39;,&#39;2&#39;,&#39;3&#39;,&#39;4&#39;,&#39;5&#39;,&#39;6&#39;,&#39;7&#39;,&#39;8&#39;,&#39;9&#39;,&#39;10&#39;),
   fac = factor(c(&#39;2&#39;,&#39;1&#39;,&#39;1&#39;,&#39;2&#39;,&#39;2&#39;,&#39;3&#39;,&#39;1&#39;,&#39;3&#39;,&#39;3&#39;,&#39;2&#39;))
 )</code></pre>
+<p>Then, convert the logical, character, factor variables to numeric
+character.</p>
+<pre class="r"><code>logical_num = as.numeric(pull(p2_df, var = logical))
+char_num = as.numeric(pull(p2_df, var = char))
+fac_num = as.numeric(pull(p2_df, var = fac))</code></pre>
+<p>Calculate the mean of variables in the dataframe.</p>
 <pre class="r"><code>mean(pull(p2_df, var = nrom))</code></pre>
-<pre><code>## [1] -0.7693242</code></pre>
+<pre><code>## [1] -0.06602826</code></pre>
 <pre class="r"><code>mean(logical_num)</code></pre>
-<pre><code>## [1] 0.3</code></pre>
+<pre><code>## [1] 0.5</code></pre>
 <pre class="r"><code>mean(char_num)</code></pre>
 <pre><code>## [1] 5.5</code></pre>
 <pre class="r"><code>mean(fac_num)</code></pre>
