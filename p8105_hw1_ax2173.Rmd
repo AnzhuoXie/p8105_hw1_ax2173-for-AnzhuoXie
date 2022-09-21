@@ -16,6 +16,21 @@ Import the data.
 data("penguins", package = "palmerpenguins")
 ```
 
+Omit the NA to calculate the mean of flipper_length_mm
+
+```{r omit the NA to calculate the mean of flipper_length_mm}
+penguins2 = na.omit(penguins)
+```
+
+* These are some descriptions of this dataframe:
+  * This dataframe includes these varibales: `r colnames(penguins)`
+  * This dataset has `r nrow(penguins)` rows, and  `r ncol(penguins)` columns.
+  * The mean flipper length is `r round(mean(penguins2$flipper_length_mm),2)`.
+  
+```{r make a scatterplot}
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = "red")) + geom_point()
+```
+
 
 
 ## Problem 2
