@@ -28,7 +28,7 @@ penguins2 = na.omit(penguins)
   * The mean flipper length is `r round(mean(penguins2$flipper_length_mm),2)`.
   
 ```{r make a scatterplot and save it to my project directory}
-ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = "red")) + geom_point()
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + geom_point()
 ggsave("scatter_plot_peguins.pdf")
 ```
 
